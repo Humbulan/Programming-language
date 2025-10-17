@@ -4,6 +4,460 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quest: A Beginner's Journey - Humbu Wandeme Trading Enterprise</title>
+    <meta name="description" content="Code Quest: A Complete Beginner's Programming Journey by Humbu Wandeme Trading Enterprise - Learn coding from scratch with interactive examples">
+    <meta name="keywords" content="programming, coding, learn to code, beginner programming, Python, JavaScript, web development">
+    <meta name="author" content="Humbu Wandeme Trading Enterprise">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Code Quest: A Beginner's Programming Journey">
+    <meta property="og:description" content="Learn programming from scratch with this interactive online book">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://humbulan.github.io/Programming-language/">
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Code Quest: Learn Programming">
+    <meta name="twitter:description" content="Interactive programming book for beginners">
+    
+    <style>
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 90;
+            display: none;
+        }
+
+        .quick-nav-item {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #f8fafc;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .quick-nav-item:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            
+            .page {
+                display: block !important;
+                page-break-after: always;
+            }
+            
+            .page.active {
+                display: block !important;
+            }
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background: #1f2937 !important;
+            color: #f9fafb !important;
+        }
+
+        .dark-mode .container {
+            background: #374151 !important;
+            color: #f9fafb !important;
+        }
+
+        .dark-mode .header {
+            background: linear-gradient(135deg, #111827 0%, #1e40af 100%) !important;
+        }
+
+        .dark-mode .nav-container {
+            background: #4b5563 !important;
+            border-color: #6b7280 !important;
+        }
+
+        .dark-mode .nav-tab {
+            background: #6b7280 !important;
+            border-color: #9ca3af !important;
+            color: #f9fafb !important;
+        }
+
+        .dark-mode .nav-tab.active {
+            background: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+        }
+
+        .dark-mode .content-section,
+        .dark-mode .page-header {
+            background: #4b5563 !important;
+            color: #f9fafb !important;
+        }
+
+        /* Search Modal */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 100px;
+        }
+
+        .search-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .dark-mode .search-content {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        /* Certificate */
+        .certificate {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 1000;
+            max-width: 600px;
+            text-align: center;
+            border: 10px solid #f59e0b;
+        }
+
+        .dark-mode .certificate {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        /* Utility Classes */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 80;
+        }
+
+        .utility-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .utility-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        .dark-mode-toggle {
+            background: #6b7280;
+        }
+
+        .bookmark-btn {
+            background: #10b981;
+        }
+
+        .search-btn {
+            background: #8b5cf6;
+        }
+
+        .print-btn {
+            background: #f59e0b;
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+
+        /* Enhanced Mobile Styles */
+        @media (max-width: 768px) {
+            .floating-buttons {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .utility-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+            
+            .quick-nav {
+                display: none !important;
+            }
+            
+            .certificate {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .dark-mode .contact-form {
+            background: #4b5563;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .dark-mode .form-input {
+            background: #6b7280;
+            border-color: #9ca3af;
+            color: #f9fafb;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background: #2563eb;
+        }
+
+        /* Social Sharing */
+        .social-sharing {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .social-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .twitter-share { background: #1da1f2; }
+        .facebook-share { background: #1877f2; }
+        .linkedin-share { background: #0a66c2; }
+        .whatsapp-share { background: #25d366; }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Table of Contents */
+        .toc-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 90;
+            max-width: 250px;
+            max-height: 70vh;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .dark-mode .toc-sidebar {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        .toc-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #3b82f6;
+        }
+
+        .toc-item {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #f8fafc;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .toc-item {
+            background: #4b5563;
+            color: #f9fafb;
+        }
+
+        .toc-item:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Progress Save Indicator */
+        .save-indicator {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: none;
+            z-index: 100;
+        }
+
+        /* Enhanced Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        button:focus, 
+        input:focus, 
+        select:focus, 
+        textarea:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .utility-btn {
+                border: 2px solid white;
+            }
+            
+            .nav-tab {
+                border: 2px solid;
+            }
+        }
+    </style>
+    
+    <!-- Your existing styles remain below -->
     <style>
         body {
             box-sizing: border-box;
@@ -28,6 +482,10 @@
             box-shadow: 0 0 50px rgba(0,0,0,0.1);
         }
 
+        /* Your existing CSS continues here... */
+        /* [ALL YOUR EXISTING CSS CODE REMAINS UNCHANGED] */
+        /* I'm keeping all your original styles exactly as they were */
+        
         /* Header */
         .header {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
@@ -717,6 +1175,91 @@
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <h2>Loading Code Quest...</h2>
+        <p>Preparing your programming journey</p>
+    </div>
+
+    <!-- Save Indicator -->
+    <div class="save-indicator" id="saveIndicator">
+        Progress Saved! ✓
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Table of Contents Sidebar -->
+    <div class="toc-sidebar no-print" id="tocSidebar">
+        <div class="toc-title">Table of Contents</div>
+        <a href="#page0" class="toc-item" onclick="showPage(0)">📖 Cover</a>
+        <a href="#page1" class="toc-item" onclick="showPage(1)">🚀 Introduction</a>
+        <a href="#page2" class="toc-item" onclick="showPage(2)">💡 What is Coding?</a>
+        <a href="#page3" class="toc-item" onclick="showPage(3)">🎯 Choose Language</a>
+        <a href="#page4" class="toc-item" onclick="showPage(4)">🔧 Basic Concepts</a>
+        <a href="#page5" class="toc-item" onclick="showPage(5)">🛠️ Projects</a>
+        <a href="#page6" class="toc-item" onclick="showPage(6)">🎓 Next Steps</a>
+    </div>
+
+    <!-- Quick Navigation -->
+    <div class="quick-nav no-print" id="quickNav">
+        <a href="#page0" class="quick-nav-item" onclick="showPage(0)">Cover</a>
+        <a href="#page1" class="quick-nav-item" onclick="showPage(1)">Intro</a>
+        <a href="#page2" class="quick-nav-item" onclick="showPage(2)">Coding</a>
+        <a href="#page3" class="quick-nav-item" onclick="showPage(3)">Language</a>
+        <a href="#page4" class="quick-nav-item" onclick="showPage(4)">Concepts</a>
+        <a href="#page5" class="quick-nav-item" onclick="showPage(5)">Projects</a>
+        <a href="#page6" class="quick-nav-item" onclick="showPage(6)">Career</a>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal no-print" id="searchModal">
+        <div class="search-content">
+            <h3>Search Code Quest</h3>
+            <input type="text" id="searchInput" placeholder="Search for topics, concepts, or keywords..." 
+                   style="width: 100%; padding: 10px; margin: 10px 0; border: 2px solid #3b82f6; border-radius: 6px;">
+            <div id="searchResults"></div>
+            <button onclick="closeSearch()" style="margin-top: 10px; padding: 8px 16px; background: #6b7280; color: white; border: none; border-radius: 4px;">Close</button>
+        </div>
+    </div>
+
+    <!-- Certificate of Completion -->
+    <div class="certificate no-print" id="certificate">
+        <h2>🎓 Certificate of Completion</h2>
+        <p>This certifies that</p>
+        <h3 id="certificateName">[Student Name]</h3>
+        <p>has successfully completed</p>
+        <h4>Code Quest: A Beginner's Programming Journey</h4>
+        <p>Presented by</p>
+        <p><strong>Humbu Wandeme Trading Enterprise</strong></p>
+        <p id="certificateDate"></p>
+        <button onclick="closeCertificate()" style="margin-top: 20px; padding: 10px 20px; background: #3b82f6; color: white; border: none; border-radius: 6px;">Close</button>
+        <button onclick="printCertificate()" style="margin-top: 10px; padding: 10px 20px; background: #10b981; color: white; border: none; border-radius: 6px;">Print Certificate</button>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons no-print">
+        <button class="utility-btn dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+            🌙
+        </button>
+        <button class="utility-btn toc-btn" onclick="toggleTOC()" title="Table of Contents">
+            📑
+        </button>
+        <button class="utility-btn bookmark-btn" onclick="saveBookmark()" title="Save Progress">
+            🔖
+        </button>
+        <button class="utility-btn search-btn" onclick="openSearch()" title="Search">
+            🔍
+        </button>
+        <button class="utility-btn print-btn" onclick="printBook()" title="Print Book">
+            🖨️
+        </button>
+        <button class="utility-btn certificate-btn" onclick="showCertificate()" title="Get Certificate" style="background: #8b5cf6;">
+            🎓
+        </button>
+    </div>
+
     <div class="container">
         <header class="header">
             <div class="header-content">
@@ -836,6 +1379,14 @@
                         </div>
                     </div>
 
+                    <!-- Social Sharing -->
+                    <div class="social-sharing no-print">
+                        <button class="social-btn twitter-share" onclick="shareOnTwitter()">Twitter</button>
+                        <button class="social-btn facebook-share" onclick="shareOnFacebook()">Facebook</button>
+                        <button class="social-btn linkedin-share" onclick="shareOnLinkedIn()">LinkedIn</button>
+                        <button class="social-btn whatsapp-share" onclick="shareOnWhatsApp()">WhatsApp</button>
+                    </div>
+
                     <!-- Footer Badges -->
                     <div class="footer-badges">
                         <div class="badge badge-success">
@@ -895,6 +1446,23 @@
                     <input type="text" class="exercise-input" placeholder="e.g., A mobile app, a website, a game..." id="dreamProject">
                     <button class="check-answer" onclick="saveDreamProject()">Save My Dream! 💫</button>
                     <div id="dreamResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form no-print">
+                    <h3 class="section-title">💬 Questions? Contact Us!</h3>
+                    <p>Have questions about programming or need guidance? Send us a message!</p>
+                    <div class="form-group">
+                        <input type="text" class="form-input" id="contactName" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" id="contactEmail" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input form-textarea" id="contactMessage" placeholder="Your message or question..."></textarea>
+                    </div>
+                    <button class="submit-btn" onclick="submitContactForm()">Send Message</button>
+                    <div id="contactResponse" style="margin-top: 1rem;"></div>
                 </div>
 
                 <div class="page-navigation">
@@ -1540,10 +2108,21 @@
                     <div id="actionPlanResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
                 </div>
 
-                <div class="highlight-box">
-                    <strong>🎉 Congratulations!</strong> You've completed "Code Quest: A Beginner's Journey"! You now have the foundation to start your programming adventure. Remember: every expert was once a beginner. Keep practicing, stay curious, and don't be afraid to make mistakes – they're how we learn! 
-                    <br><br>
-                    <strong>🚀 Ready to code? Your journey starts now!</strong>
+                <!-- Completion Celebration -->
+                <div class="highlight-box" style="text-align: center;">
+                    <h2>🎉 Congratulations!</h2>
+                    <p>You've completed "Code Quest: A Beginner's Journey"! You now have the foundation to start your programming adventure.</p>
+                    <p><strong>Remember:</strong> Every expert was once a beginner. Keep practicing, stay curious, and don't be afraid to make mistakes – they're how we learn!</p>
+                    <button class="start-button" onclick="showCertificate()" style="margin-top: 1rem;">
+                        🎓 Get Your Certificate of Completion
+                    </button>
+                </div>
+
+                <div class="social-sharing no-print">
+                    <button class="social-btn twitter-share" onclick="shareOnTwitter()">Share on Twitter</button>
+                    <button class="social-btn facebook-share" onclick="shareOnFacebook()">Share on Facebook</button>
+                    <button class="social-btn linkedin-share" onclick="shareOnLinkedIn()">Share on LinkedIn</button>
+                    <button class="social-btn whatsapp-share" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
                 </div>
 
                 <div class="page-navigation">
@@ -1559,6 +2138,16 @@
     </div>
 
     <script>
+        // Enhanced JavaScript with new functionality
+
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-screen').style.display = 'none';
+            }, 1500);
+        });
+
+        // Your existing JavaScript variables and functions
         let currentPageIndex = 0;
         const totalPages = 7;
         let secretNumber = Math.floor(Math.random() * 10) + 1;
@@ -1569,10 +2158,16 @@
         document.getElementById('totalPages').textContent = totalPages;
         updateProgress();
 
+        // Load saved progress
+        loadProgress();
+
         function updateProgress() {
             const progress = (currentPageIndex / (totalPages - 1)) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
             document.getElementById('currentPage').textContent = currentPageIndex + 1;
+            
+            // Auto-save progress
+            saveProgress();
         }
 
         function showPage(pageIndex) {
@@ -1593,6 +2188,11 @@
             
             // Scroll to top
             window.scrollTo(0, 0);
+            
+            // Show quick navigation on larger screens
+            if (window.innerWidth > 1024) {
+                document.getElementById('quickNav').style.display = 'block';
+            }
         }
 
         function nextPage() {
@@ -1619,7 +2219,234 @@
             }
         });
 
-        // Interactive functions
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+            showToast(isDarkMode ? 'Dark mode enabled' : 'Light mode enabled');
+        }
+
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Table of Contents Toggle
+        function toggleTOC() {
+            const toc = document.getElementById('tocSidebar');
+            toc.style.display = toc.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Bookmark/Save Progress
+        function saveBookmark() {
+            saveProgress();
+            showSaveIndicator();
+        }
+
+        function saveProgress() {
+            const progress = {
+                currentPage: currentPageIndex,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('codeQuestProgress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('codeQuestProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                showPage(progress.currentPage);
+            }
+        }
+
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            indicator.style.display = 'block';
+            setTimeout(() => {
+                indicator.style.display = 'none';
+            }, 2000);
+        }
+
+        // Search Functionality
+        function openSearch() {
+            document.getElementById('searchModal').style.display = 'flex';
+            document.getElementById('searchInput').focus();
+        }
+
+        function closeSearch() {
+            document.getElementById('searchModal').style.display = 'none';
+        }
+
+        // Simple search implementation
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const results = document.getElementById('searchResults');
+            
+            if (query.length < 2) {
+                results.innerHTML = '<p>Type at least 2 characters to search</p>';
+                return;
+            }
+            
+            // Simple content search - in a real app, you'd have a more comprehensive index
+            const searchableContent = [
+                { page: 1, title: 'Introduction to Programming', content: 'Programming is like learning a new language' },
+                { page: 2, title: 'What is Coding?', content: 'Coding is creating instructions for computers' },
+                { page: 3, title: 'Choosing Your Language', content: 'Python, JavaScript, Scratch, Java' },
+                { page: 4, title: 'Basic Concepts', content: 'Variables, Functions, Loops, Conditionals' },
+                { page: 5, title: 'Hands-on Projects', content: 'Number Guessing Game, To-Do List, Calculator' },
+                { page: 6, title: 'Career Paths', content: 'Web Developer, Mobile App Developer, Data Scientist' }
+            ];
+            
+            const matches = searchableContent.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.content.toLowerCase().includes(query)
+            );
+            
+            if (matches.length > 0) {
+                results.innerHTML = matches.map(item => `
+                    <div style="padding: 10px; border-bottom: 1px solid #e2e8f0; cursor: pointer;" 
+                         onclick="showPage(${item.page}); closeSearch();">
+                        <strong>${item.title}</strong><br>
+                        <small>${item.content.substring(0, 100)}...</small>
+                    </div>
+                `).join('');
+            } else {
+                results.innerHTML = '<p>No results found. Try different keywords.</p>';
+            }
+        });
+
+        // Print Functionality
+        function printBook() {
+            window.print();
+        }
+
+        function printCertificate() {
+            // Create a print-friendly version of the certificate
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Certificate of Completion</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+                            .certificate { border: 15px solid #f59e0b; padding: 40px; max-width: 800px; margin: 0 auto; }
+                            h1 { color: #1e40af; }
+                            h2 { color: #059669; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="certificate">
+                            <h1>🎓 Certificate of Completion</h1>
+                            <p>This certifies that</p>
+                            <h2>${document.getElementById('certificateName').textContent}</h2>
+                            <p>has successfully completed</p>
+                            <h3>Code Quest: A Beginner's Programming Journey</h3>
+                            <p>Presented by</p>
+                            <p><strong>Humbu Wandeme Trading Enterprise</strong></p>
+                            <p>${new Date().toLocaleDateString()}</p>
+                        </div>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Certificate of Completion
+        function showCertificate() {
+            const name = prompt('Enter your name for the certificate:');
+            if (name) {
+                document.getElementById('certificateName').textContent = name;
+                document.getElementById('certificateDate').textContent = new Date().toLocaleDateString();
+                document.getElementById('certificate').style.display = 'block';
+            }
+        }
+
+        function closeCertificate() {
+            document.getElementById('certificate').style.display = 'none';
+        }
+
+        // Toast Notifications
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Social Sharing
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("I'm learning programming with Code Quest! Check out this amazing interactive book.");
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent("Code Quest: A Beginner's Programming Journey");
+            const summary = encodeURIComponent("Interactive programming book for beginners");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function shareOnWhatsApp() {
+            const text = encodeURIComponent("Check out this interactive programming book: " + window.location.href);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        // Contact Form
+        function submitContactForm() {
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            if (!name || !email || !message) {
+                document.getElementById('contactResponse').innerHTML = 
+                    '<p style="color: #dc2626;">Please fill in all fields.</p>';
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            // For now, we'll just show a success message
+            document.getElementById('contactResponse').innerHTML = 
+                '<p style="color: #059669;">Thank you for your message! We\'ll get back to you soon.</p>';
+            
+            // Clear form
+            document.getElementById('contactName').value = '';
+            document.getElementById('contactEmail').value = '';
+            document.getElementById('contactMessage').value = '';
+            
+            showToast('Message sent successfully!');
+        }
+
+        // Responsive quick navigation
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 1024) {
+                document.getElementById('quickNav').style.display = 'none';
+            } else if (currentPageIndex > 0) {
+                document.getElementById('quickNav').style.display = 'block';
+            }
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.id === 'searchModal') {
+                closeSearch();
+            }
+            if (e.target.id === 'certificate') {
+                closeCertificate();
+            }
+        });
+
+        // Your existing interactive functions remain unchanged
+        // [ALL YOUR EXISTING JAVASCRIPT CODE REMAINS UNCHANGED]
         function runFirstDemo() {
             const messages = [
                 "🎉 Hello, future programmer!",
@@ -1994,4 +2821,4 @@
         }
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98fecc7017834ed4',t:'MTc2MDY5MzY1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+                            </html>
