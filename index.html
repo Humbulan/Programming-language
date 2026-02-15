@@ -94,7 +94,7 @@
                 color: black !important;
             }
             
-            .container {
+            .container { overflow-x: auto; -webkit-overflow-scrolling: touch;
                 box-shadow: none !important;
                 margin: 0 !important;
                 max-width: 100% !important;
@@ -116,7 +116,7 @@
             color: #f9fafb !important;
         }
 
-        .dark-mode .container {
+        .dark-mode .container { overflow-x: auto; -webkit-overflow-scrolling: touch;
             background: #374151 !important;
             color: #f9fafb !important;
         }
@@ -125,7 +125,7 @@
             background: linear-gradient(135deg, #111827 0%, #1e40af 100%) !important;
         }
 
-        .dark-mode .nav-container {
+        .dark-mode .nav.container { overflow-x: auto; -webkit-overflow-scrolling: touch;
             background: #4b5563 !important;
             border-color: #6b7280 !important;
         }
@@ -200,7 +200,7 @@
         }
 
         /* Utility Classes */
-        .floating-buttons {
+        .floating-buttons { bottom: 5px; right: 5px; scale: 0.8;
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -264,7 +264,7 @@
 
         /* Enhanced Mobile Styles */
         @media (max-width: 768px) {
-            .floating-buttons {
+            .floating-buttons { bottom: 5px; right: 5px; scale: 0.8;
                 bottom: 10px;
                 right: 10px;
             }
@@ -474,7 +474,7 @@
             height: 100%;
         }
 
-        .container {
+        .container { overflow-x: auto; -webkit-overflow-scrolling: touch;
             max-width: 1200px;
             margin: 0 auto;
             background: white;
@@ -531,7 +531,7 @@
         }
 
         /* Navigation */
-        .nav-container {
+        .nav.container { overflow-x: auto; -webkit-overflow-scrolling: touch;
             background: #f8fafc;
             border-bottom: 1px solid #e2e8f0;
             padding: 0 2rem;
@@ -980,7 +980,7 @@
         }
 
         /* Navigation buttons */
-        .page-navigation {
+        .page-navigation { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
             display: flex;
             justify-content: space-between;
             margin-top: 3rem;
@@ -1255,7 +1255,7 @@
         <button class="utility-btn print-btn" onclick="printBook()" title="Print Book">
             🖨️
         </button>
-        <button class="utility-btn certificate-btn" onclick="showCertificate()" title="Get Certificate" style="background: #8b5cf6;">
+        <button class="utility-btn certificate-btn" onclick="window.location.href="https://monitor.humbu.store/pages/store.html"" title="Get Certificate" style="background: #8b5cf6;">
             🎓
         </button>
     </div>
@@ -2113,7 +2113,7 @@
                     <h2>🎉 Congratulations!</h2>
                     <p>You've completed "Code Quest: A Beginner's Journey"! You now have the foundation to start your programming adventure.</p>
                     <p><strong>Remember:</strong> Every expert was once a beginner. Keep practicing, stay curious, and don't be afraid to make mistakes – they're how we learn!</p>
-                    <button class="start-button" onclick="showCertificate()" style="margin-top: 1rem;">
+                    <button class="start-button" onclick="window.location.href="https://monitor.humbu.store/pages/store.html"" style="margin-top: 1rem;">
                         🎓 Get Your Certificate of Completion
                     </button>
                 </div>
@@ -2354,7 +2354,7 @@
         }
 
         // Certificate of Completion
-        function showCertificate() {
+        function window.location.href="https://monitor.humbu.store/pages/store.html" {
             const name = prompt('Enter your name for the certificate:');
             if (name) {
                 document.getElementById('certificateName').textContent = name;
