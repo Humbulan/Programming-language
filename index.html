@@ -1176,7 +1176,7 @@
 </head>
 <body>
     <!-- Loading Screen -->
-    <div id="loading-screen">
+    <div id="loading-screen" style="display:none !important;">
         <div class="loader"></div>
         <h2>Loading Code Quest...</h2>
         <p>Preparing your programming journey</p>
@@ -1260,7 +1260,7 @@
         </button>
     </div>
 
-    <div class="container">
+    <div class="container" style="display:block !important; visibility:visible !important;">
         <header class="header">
             <div class="header-content">
                 <div class="logo">
@@ -2143,7 +2143,7 @@
         // Loading screen
         window.addEventListener('load', function() {
             setTimeout(function() {
-                document.getElementById('loading-screen').style.display = 'none';
+                document.body.style.opacity = '1'; document.getElementById('loading-screen') ? document.getElementById('loading-screen').style.display = 'none' : console.log('Fixed: No loading screen found');
             }, 1500);
         });
 
@@ -2354,7 +2354,7 @@
         }
 
         // Certificate of Completion
-        function window.location.href="https://monitor.humbu.store/pages/store.html" {
+        function getCertificate() {
             const name = prompt('Enter your name for the certificate:');
             if (name) {
                 document.getElementById('certificateName').textContent = name;
