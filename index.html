@@ -2323,14 +2323,9 @@
         }
 
                         
-                function printCertificate() {
+                        function printCertificate() {
             const cert = document.getElementById('certificate');
-            // Ensure it's visible
-            if (cert.style.display === 'none' || cert.style.visibility === 'hidden') {
-                cert.style.display = 'block';
-                cert.style.visibility = 'visible';
-            }
-            // Show a loading indicator (optional)
+            // Show loading message
             const btn = event.target;
             const originalText = btn.textContent;
             btn.textContent = 'Generating...';
@@ -2363,9 +2358,20 @@
                 const x = (pdfWidth - finalWidth) / 2;
                 const y = (pdfHeight - finalHeight) / 2;
                 pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
-                pdf.save('Humbu_Nexus_Certificate.pdf');
+                
+                // Generate a Blob from the PDF
+                const blob = pdf.output('blob');
+                // Create a download link
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'Humbu_Nexus_Certificate.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                // Release the blob URL
+                setTimeout(() => URL.revokeObjectURL(link.href), 100);
             }).catch(err => {
-                alert('PDF generation failed. Please use the browser print option instead.');
+                alert('PDF generation failed: ' + err.message);
                 console.error(err);
             }).finally(() => {
                 btn.textContent = originalText;
