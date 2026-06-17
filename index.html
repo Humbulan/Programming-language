@@ -85,30 +85,28 @@
 
         /* Print Styles */
         @media print {
-            .no-print {
-                display: none !important;
-            }
-            
-            body {
-                background: white !important;
-                color: black !important;
-            }
-            
-            .container { overflow-x: auto; -webkit-overflow-scrolling: touch;
-                box-shadow: none !important;
-                margin: 0 !important;
-                max-width: 100% !important;
-            }
-            
-            .page {
-                display: block !important;
-                page-break-after: always;
-            }
-            
-            .page.active {
-                display: block !important;
-            }
-        }
+    /* Hide everything in the document by default */
+    body * { visibility: hidden; }
+
+    /* Explicitly isolate and show the certificate container and its nested elements */
+    #certificate, #certificate * { visibility: visible; }
+
+    #certificate {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 40px;
+        background: #0f1214 !important;
+        color: #ffffff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Hide ONLY the interactive browser buttons during print extraction */
+    #certificate button { display: none !important; }
+}
 
         /* Dark Mode */
         .dark-mode {
