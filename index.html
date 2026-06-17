@@ -1161,8 +1161,9 @@
         }
     </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="html2canvas.min.js"></script>
+<script src="jspdf.umd.min.js"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -2322,23 +2323,56 @@
         }
 
                         
-        function printCertificate() {
-            // Try PDF download first
+                function printCertificate() {
             const cert = document.getElementById('certificate');
-            if (typeof html2canvas !== 'undefined' && typeof window.jspdf !== 'undefined') {
-                html2canvas(cert, {
-                    scale: 2,
-                    backgroundColor: '#0f1214',
-                    allowTaint: false,
-                    useCORS: true,
-                    logging: false,
-                    width: cert.scrollWidth,
-                    height: cert.scrollHeight,
-                    windowWidth: cert.scrollWidth,
-                    windowHeight: cert.scrollHeight
-                }).then(canvas => {
+            // Ensure it's visible
+            if (cert.style.display === 'none' || cert.style.visibility === 'hidden') {
+                cert.style.display = 'block';
+                cert.style.visibility = 'visible';
+            }
+            // Show a loading indicator (optional)
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Generating...';
+            btn.disabled = true;
+
+            html2canvas(cert, {
+                scale: 2,
+                backgroundColor: '#0f1214',
+                allowTaint: false,
+                useCORS: true,
+                logging: false,
+                width: cert.scrollWidth,
+                height: cert.scrollHeight,
+                windowWidth: cert.scrollWidth,
+                windowHeight: cert.scrollHeight
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const margin = 10;
+                const maxWidth = pdfWidth - 2 * margin;
+                const maxHeight = pdfHeight - 2 * margin;
+                const imgWidth = canvas.width;
+                const imgHeight = canvas.height;
+                const ratio = Math.min(maxWidth / imgWidth, maxHeight / imgHeight);
+                const finalWidth = imgWidth * ratio;
+                const finalHeight = imgHeight * ratio;
+                const x = (pdfWidth - finalWidth) / 2;
+                const y = (pdfHeight - finalHeight) / 2;
+                pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
+                pdf.save('Humbu_Nexus_Certificate.pdf');
+            }).catch(err => {
+                alert('PDF generation failed. Please use the browser print option instead.');
+                console.error(err);
+            }).finally(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
+        }).then(canvas => {
                     const imgData = canvas.toDataURL('image/png');
-                    const { jsPDF } = window.jspdf;
                     const pdf = new jsPDF('p', 'mm', 'a4');
                     const pdfWidth = pdf.internal.pageSize.getWidth();
                     const pdfHeight = pdf.internal.pageSize.getHeight();
@@ -2377,8 +2411,9 @@
                             h2 { color: #059669; }
                         </style>
                     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="html2canvas.min.js"></script>
+<script src="jspdf.umd.min.js"></script>
 </head>
                     <body>
                         <div class="certificate">
@@ -2904,7 +2939,10 @@
                             .course { font-size:13px; }
                         }
                     </style>
-                </head>
+                
+<script src="html2canvas.min.js"></script>
+<script src="jspdf.umd.min.js"></script>
+</head>
                 <body>
                     <div class="cert">
                         <div class="header"><span>Save as PDF</span><span>Copies: 01</span><span>Paper size: Letter</span></div>
