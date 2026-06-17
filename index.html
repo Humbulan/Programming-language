@@ -2359,8 +2359,16 @@
                         .presented { font-size:12px; color:#82919b; margin:6px 0; }
                         .date { font-size:10px; color:#00ff78; margin-top:6px; }
                         .footer { margin-top:12px; border-top:1px solid #283237; padding-top:8px; font-size:10px; color:#6a7a85; }
+                        
                         @media print {
-                            body { padding:0; }
+                            body { padding:0; background:#0f1214 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                            .cert { border:1px solid #00ff78; padding:10px 15px; background:#0f1214 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                            .name { font-size:22px; }
+                            .details { font-size:11px; }
+                            .nexus { font-size:16px; }
+                            .cert-title { font-size:14px; }
+                            .course { font-size:13px; }
+                        }
                             .cert { border:1px solid #00ff78; padding:10px 15px; }
                             .name { font-size:22px; }
                             .details { font-size:11px; }
