@@ -93,38 +93,7 @@
     size: A4 portrait; /* or letter; match your paper */
 }
 @media print {
-    body {
-        margin: 0;
-        padding: 0;
-        background: #0f1214;
-    }
-    body * { visibility: hidden; }
-    #certificate, #certificate * { visibility: visible; }
-    #certificate {
-        display: block !important;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        background: #0f1214 !important;
-        color: #ffffff !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        page-break-after: avoid;
-        page-break-inside: avoid;
-        overflow: visible; /* allow scaling to show all content */
-        /* Scale the content to fit inside the page */
-        transform: scale(0.85);
-        transform-origin: top left;
-        /* Adjust width/height to compensate for scaling if needed */
-        width: calc(100% / 0.85);
-        height: calc(100% / 0.85);
-        /* Alternatively, use a fixed size and center */
-        /* left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.85); */
-    }
+    /* Hide only the buttons during print (if user still uses browser print) */
     #certificate button { display: none !important; }
 }
 
@@ -1191,6 +1160,9 @@
             margin-top: 0.5rem;
         }
     </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -2350,7 +2322,37 @@
         }
 
         function printCertificate() {
-            window.print();
+            // Capture the certificate div and generate a PDF
+            const certificate = document.getElementById('certificate');
+            // Temporarily remove the no-print class to ensure capture (if needed)
+            // but we'll capture the visible element as is.
+            html2canvas(certificate, {
+                scale: 2, // high quality
+                backgroundColor: '#0f1214',
+                allowTaint: false,
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf;
+                // Use A4 portrait (or switch to landscape if your layout is wider)
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                // Calculate image aspect ratio
+                const imgWidth = canvas.width;
+                const imgHeight = canvas.height;
+                const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                const finalWidth = imgWidth * ratio;
+                const finalHeight = imgHeight * ratio;
+                const x = (pdfWidth - finalWidth) / 2;
+                const y = (pdfHeight - finalHeight) / 2;
+                pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
+                pdf.save('Humbu_Nexus_Certificate.pdf');
+            }).catch(err => {
+                alert('Failed to generate PDF. Please try printing via browser.');
+                console.error(err);
+            });
         }
         function old_disabled_print() {
             const printWindow = window.open('', '_blank');
@@ -2364,7 +2366,10 @@
                             h1 { color: #1e40af; }
                             h2 { color: #059669; }
                         </style>
-                    </head>
+                    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
                     <body>
                         <div class="certificate">
                             <h1>🎓 Certificate of Completion</h1>
