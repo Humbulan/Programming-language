@@ -84,18 +84,31 @@
         }
 
         /* Print Styles */
-        @page {
-    margin: 0;
-    size: auto; /* let the browser choose page size */
-}
-@page {
-    margin: 0;
-    size: A4 portrait; /* or letter; match your paper */
-}
-@media print {
-    /* Hide only the buttons during print (if user still uses browser print) */
-    #certificate button { display: none !important; }
-}
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .container { overflow-x: auto; -webkit-overflow-scrolling: touch;
+                box-shadow: none !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            
+            .page {
+                display: block !important;
+                page-break-after: always;
+            }
+            
+            .page.active {
+                display: block !important;
+            }
+        }
 
         /* Dark Mode */
         .dark-mode {
@@ -1160,10 +1173,6 @@
             margin-top: 0.5rem;
         }
     </style>
-
-
-<script src="html2canvas.min.js"></script>
-<script src="jspdf.umd.min.js"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -2322,88 +2331,9 @@
             window.print();
         }
 
-                        
-                        function printCertificate() {
-            const cert = document.getElementById('certificate');
-            // Show loading message
-            const btn = event.target;
-            const originalText = btn.textContent;
-            btn.textContent = 'Generating...';
-            btn.disabled = true;
-
-            html2canvas(cert, {
-                scale: 2,
-                backgroundColor: '#0f1214',
-                allowTaint: false,
-                useCORS: true,
-                logging: false,
-                width: cert.scrollWidth,
-                height: cert.scrollHeight,
-                windowWidth: cert.scrollWidth,
-                windowHeight: cert.scrollHeight
-            }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = pdf.internal.pageSize.getHeight();
-                const margin = 10;
-                const maxWidth = pdfWidth - 2 * margin;
-                const maxHeight = pdfHeight - 2 * margin;
-                const imgWidth = canvas.width;
-                const imgHeight = canvas.height;
-                const ratio = Math.min(maxWidth / imgWidth, maxHeight / imgHeight);
-                const finalWidth = imgWidth * ratio;
-                const finalHeight = imgHeight * ratio;
-                const x = (pdfWidth - finalWidth) / 2;
-                const y = (pdfHeight - finalHeight) / 2;
-                pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
-                
-                // Generate a Blob from the PDF
-                const blob = pdf.output('blob');
-                // Create a download link
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'Humbu_Nexus_Certificate.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                // Release the blob URL
-                setTimeout(() => URL.revokeObjectURL(link.href), 100);
-            }).catch(err => {
-                alert('PDF generation failed: ' + err.message);
-                console.error(err);
-            }).finally(() => {
-                btn.textContent = originalText;
-                btn.disabled = false;
-            });
-        }).then(canvas => {
-                    const imgData = canvas.toDataURL('image/png');
-                    const pdf = new jsPDF('p', 'mm', 'a4');
-                    const pdfWidth = pdf.internal.pageSize.getWidth();
-                    const pdfHeight = pdf.internal.pageSize.getHeight();
-                    const margin = 10;
-                    const maxWidth = pdfWidth - 2 * margin;
-                    const maxHeight = pdfHeight - 2 * margin;
-                    const imgWidth = canvas.width;
-                    const imgHeight = canvas.height;
-                    const ratio = Math.min(maxWidth / imgWidth, maxHeight / imgHeight);
-                    const finalWidth = imgWidth * ratio;
-                    const finalHeight = imgHeight * ratio;
-                    const x = (pdfWidth - finalWidth) / 2;
-                    const y = (pdfHeight - finalHeight) / 2;
-                    pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
-                    pdf.save('Humbu_Nexus_Certificate.pdf');
-                }).catch(() => {
-                    // If PDF fails, use fallback
-                    printCertificateFallback();
-                });
-            } else {
-                // Libraries not loaded, use fallback
-                printCertificateFallback();
-            }
+        function printCertificate() {
+            window.print();
         }
-
         function old_disabled_print() {
             const printWindow = window.open('', '_blank');
             printWindow.document.write(`
@@ -2416,11 +2346,7 @@
                             h1 { color: #1e40af; }
                             h2 { color: #059669; }
                         </style>
-                    
-
-<script src="html2canvas.min.js"></script>
-<script src="jspdf.umd.min.js"></script>
-</head>
+                    </head>
                     <body>
                         <div class="certificate">
                             <h1>🎓 Certificate of Completion</h1>
@@ -2906,74 +2832,5 @@
                  You've got this! Every expert was once a beginner. 🌟`;
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98fecc7017834ed4',t:'MTc2MDY5MzY1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
-        function printCertificateFallback() {
-            const name = document.getElementById('certificateName').textContent;
-            const date = document.getElementById('certificateDate').textContent || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            const win = window.open('', '_blank', 'width=600,height=700');
-            if (!win) {
-                alert('Pop-up blocked. Please allow pop-ups for this site.');
-                return;
-            }
-            win.document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Humbu Nexus Certificate</title>
-                    <style>
-                        * { margin:0; padding:0; box-sizing:border-box; }
-                        body { background:#0f1214; display:flex; justify-content:center; align-items:center; min-height:100vh; font-family:monospace; color:#fff; padding:10px; }
-                        .cert { background:#0f1214; border:2px solid #00ff78; padding:15px 20px; max-width:750px; width:100%; border-radius:6px; text-align:center; }
-                        .header { display:flex; justify-content:space-between; font-size:10px; color:#00ff78; border-bottom:1px solid #283237; padding-bottom:5px; margin-bottom:10px; text-transform:uppercase; }
-                        .nexus { color:#00ff78; font-size:18px; letter-spacing:3px; }
-                        .cert-title { font-size:16px; border-bottom:1px solid #283237; padding-bottom:6px; margin-bottom:10px; }
-                        .sub { color:#aab9c3; font-size:12px; margin:4px 0; }
-                        .name { font-size:26px; font-weight:bold; text-transform:uppercase; margin:8px 0; }
-                        .course { color:#00ff78; font-size:14px; font-weight:bold; margin:6px 0; }
-                        .details { text-align:left; max-width:400px; margin:8px auto; color:#d0dbe3; font-size:12px; line-height:1.6; padding-left:15px; list-style:none; }
-                        .details li::before { content:"• "; color:#00ff78; }
-                        .presented { font-size:12px; color:#82919b; margin:6px 0; }
-                        .date { font-size:10px; color:#00ff78; margin-top:6px; }
-                        .footer { margin-top:12px; border-top:1px solid #283237; padding-top:8px; font-size:10px; color:#6a7a85; }
-                        @media print {
-                            body { padding:0; }
-                            .cert { border:1px solid #00ff78; padding:10px 15px; }
-                            .name { font-size:22px; }
-                            .details { font-size:11px; }
-                            .nexus { font-size:16px; }
-                            .cert-title { font-size:14px; }
-                            .course { font-size:13px; }
-                        }
-                    </style>
-                
-<script src="html2canvas.min.js"></script>
-<script src="jspdf.umd.min.js"></script>
-</head>
-                <body>
-                    <div class="cert">
-                        <div class="header"><span>Save as PDF</span><span>Copies: 01</span><span>Paper size: Letter</span></div>
-                        <div class="nexus">⚡ HUMBU COMMUNITY NEXUS ⚡</div>
-                        <div class="cert-title">CERTIFICATE OF COMPLETION</div>
-                        <div class="sub">This sovereign credential explicitly verifies that terminal operator:</div>
-                        <div class="name">${name}</div>
-                        <div class="sub">has successfully mastered the intensive 60‑day technical curriculum:</div>
-                        <div class="course">ACADEMIC SERIES VOL. 1: LOW‑LEVEL SYSTEMS & PYTHON AUTOMATION</div>
-                        <ul class="details">
-                            <li>Local Linux Terminal Orchestration &amp; Environment Sanitization</li>
-                            <li>Advanced Network Reconnaissance, Scanning &amp; Protocol Auditing</li>
-                            <li>Sovereign Python Engine Development &amp; Socket Automation</li>
-                        </ul>
-                        <div class="presented">Presented by: <strong>Humbu Wandeme Trading Enterprise</strong></div>
-                        <div class="date">${date}</div>
-                        <div class="footer">Issued by: Humbulani Mudau, CEO &amp; Director</div>
-                    </div>
-                    <script>
-                        window.onload = function() { window.print(); };
-                    <\/script>
-                </body>
-                </html>
-            `);
-            win.document.close();
-        }
-</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98fecc7017834ed4',t:'MTc2MDY5MzY1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
                             </html>
