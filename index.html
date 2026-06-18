@@ -1565,93 +1565,49 @@ body {
 
             <!-- Page 2: What is Coding & Why Learn It? -->
             <div class="page" id="page2">
-                <div class="page-header">
-                    <h1 class="page-title">💡 What is Coding & Why Learn It?</h1>
-                    <p class="page-subtitle">Understanding the power of programming</p>
-                </div>
-
-                <div class="content-section">
-                    <h2 class="section-title">What is Coding?</h2>
-                    <p>Coding (or programming) is the process of creating instructions for computers to follow. Think of it like writing a recipe, but instead of making cookies, you're making apps, websites, games, and more!</p>
-
-                    <div class="code-block">
-                        <div class="code-header">🍪 A Recipe vs Code Comparison</div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                            <div>
-                                <strong style="color: #f59e0b;">Recipe:</strong><br>
-                                1. Preheat oven to 350°F<br>
-                                2. Mix flour and sugar<br>
-                                3. Add eggs<br>
-                                4. Bake for 12 minutes
-                            </div>
-                            <div>
-                                <strong style="color: #10b981;">Code:</strong><br>
-                                <span class="keyword">function</span> <span style="color: #f9fafb;">bakeCookies</span>() {<br>
-                                &nbsp;&nbsp;<span style="color: #f9fafb;">oven.preheat</span>(<span class="number">350</span>);<br>
-                                &nbsp;&nbsp;<span style="color: #f9fafb;">mix</span>(<span class="string">"flour"</span>, <span class="string">"sugar"</span>);<br>
-                                &nbsp;&nbsp;<span style="color: #f9fafb;">add</span>(<span class="string">"eggs"</span>);<br>
-                                &nbsp;&nbsp;<span style="color: #f9fafb;">bake</span>(<span class="number">12</span>);<br>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h2 class="section-title">Why Should You Learn to Code?</h2>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                        <div class="tip-box">
-                            <div class="tip-title">💰 Great Career Opportunities</div>
-                            <p>Software developers earn an average of $70,000-$120,000+ per year, and the demand is growing every day!</p>
-                        </div>
-                        <div class="tip-box">
-                            <div class="tip-title">🧠 Problem-Solving Skills</div>
-                            <p>Programming teaches you to break down complex problems into smaller, manageable pieces.</p>
-                        </div>
-                        <div class="tip-box">
-                            <div class="tip-title">🌍 Change the World</div>
-                            <p>Code powers everything from social media to space exploration. You can build solutions that help millions!</p>
-                        </div>
-                        <div class="tip-box">
-                            <div class="tip-title">🎨 Creative Expression</div>
-                            <p>Programming is an art form! You can create beautiful websites, fun games, and innovative apps.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="interactive-demo">
-                    <div class="demo-title">🎯 Programming in Action</div>
-                    <p>See how a simple program can solve everyday problems:</p>
-                    <button class="try-button" onclick="runCalculatorDemo()">Calculate My Age in Days!</button>
-                    <div style="margin: 1rem 0;">
-                        <input type="number" placeholder="Enter your age" id="ageInput" style="padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px; margin-right: 0.5rem;">
-                    </div>
-                    <div class="demo-output" id="calculatorDemo">Enter your age and click the button! 🎂</div>
-                </div>
-
-                <div class="exercise">
-                    <div class="exercise-title">🤔 Think About It</div>
-                    <p>Which of these reasons for learning to code excites you most?</p>
-                    <div style="margin: 1rem 0;">
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="reason" value="career"> 💼 Career opportunities</label>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="reason" value="creativity"> 🎨 Creative expression</label>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="reason" value="problem"> 🧩 Problem-solving</label>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="reason" value="world"> 🌟 Changing the world</label>
-                    </div>
-                    <button class="check-answer" onclick="checkMotivation()">Share My Motivation! 🚀</button>
-                    <div id="motivationResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
-                </div>
-
-                <div class="page-navigation">
-                    <button class="nav-button" onclick="prevPage()">
-                        ← Previous
-                    </button>
-                    <button class="nav-button" onclick="nextPage()">
-                        Next: Choose Your Language →
-                    </button>
-                </div>
+    <div class="page-header">
+        <h1 class="page-title">🛠️ The Stack</h1>
+        <p class="page-subtitle">The tools and technologies you'll master in 60 days</p>
+    </div>
+    <div class="content-section">
+        <p>Your journey will cover five core domains that form the foundation of modern cybersecurity and automation:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;">
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">🖥️ Linux Terminal</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Navigation, file operations, permissions, process management, and scripting.</p>
             </div>
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">🔍 Network Recon</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Scanning, auditing, protocol analysis with tools like Nmap, tcpdump, and Wireshark.</p>
+            </div>
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">⚙️ Python Automation</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Scripting, building APIs, secure coding, and integrating with system tools.</p>
+            </div>
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">🛡️ Security Fundamentals</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Threat modeling, log analysis, defensive strategies, and ethical hacking.</p>
+            </div>
+            <div class="highlight-box" style="margin: 0; grid-column: span 2;">
+                <strong style="color: #00ff78;">📡 Cloud & Containers</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Deploying and managing services using Docker, Kubernetes, and cloud platforms.</p>
+            </div>
+        </div>
+        <p>Each week introduces a new layer of the stack, and you’ll build practical skills through daily terminal exercises.</p>
+        <div class="interactive-demo">
+            <div class="demo-title">💻 Check Your Environment</div>
+            <p>Run this command to verify your Termux setup:</p>
+            <div class="code-block">
+                <span style="color: #00ff78;">uname -a && pwd && whoami</span>
+            </div>
+            <button class="try-button" onclick="alert('Open Termux and run the command above!')">Try It Now</button>
+        </div>
+    </div>
+    <div class="page-navigation">
+        <button class="nav-button" onclick="prevPage()">← Previous</button>
+        <button class="nav-button" onclick="nextPage()">Next →</button>
+    </div>
+</div>
 
             <!-- Page 3: Choosing Your First Programming Language -->
             <div class="page" id="page3">
