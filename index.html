@@ -1695,125 +1695,115 @@ body {
 
             <!-- Page 5: Hands-on Projects for Beginners -->
             <div class="page" id="page5">
-                <div class="page-header">
-                    <h1 class="page-title">🛠️ Hands-on Projects for Beginners</h1>
-                    <p class="page-subtitle">Build real projects to practice your skills!</p>
-                </div>
+    <div class="page-header">
+        <h1 class="page-title">🛠️ Hands‑on Labs</h1>
+        <p class="page-subtitle">Build tools for real‑world cybersecurity & automation</p>
+    </div>
+    <div class="content-section">
+        <p>Practice your skills by building these three essential tools. Each lab reinforces core concepts: variables, loops, lists, functions, and conditionals – all in a cybersecurity context.</p>
 
-                <div class="content-section">
-                    <h2 class="section-title">Project-Based Learning</h2>
-                    <p>The best way to learn programming is by building real projects! Here are beginner-friendly projects that will teach you essential skills:</p>
-
-                    <div class="project-card">
-                        <div class="project-title">🎯 Project 1: Number Guessing Game</div>
-                        <p><strong>What you'll learn:</strong> Variables, loops, conditionals, user input</p>
-                        <p><strong>Description:</strong> Create a game where the computer picks a random number and the player tries to guess it!</p>
-                        
-                        <div class="code-block">
-                            <div class="code-header">🐍 Python Version</div>
-                            <span class="keyword">import</span> <span style="color: #f9fafb;">random</span><br><br>
-                            <span style="color: #f9fafb;">secret_number</span> = <span style="color: #f9fafb;">random.randint</span>(<span class="number">1</span>, <span class="number">100</span>)<br>
-                            <span style="color: #f9fafb;">guesses</span> = <span class="number">0</span><br><br>
-                            <span class="keyword">while</span> <span class="keyword">True</span>:<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">guess</span> = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Guess a number (1-100): "</span>))<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">guesses</span> += <span class="number">1</span><br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span style="color: #f9fafb;">guess</span> == <span style="color: #f9fafb;">secret_number</span>:<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Congratulations! You got it in </span><span style="color: #f9fafb;">{guesses}</span><span class="string"> tries!"</span>)<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">elif</span> <span style="color: #f9fafb;">guess</span> < <span style="color: #f9fafb;">secret_number</span>:<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Too low! Try higher."</span>)<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>:<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Too high! Try lower."</span>)
-                        </div>
-
-                        <div class="interactive-demo">
-                            <div class="demo-title">🎮 Try the Game!</div>
-                            <p>I'm thinking of a number between 1 and 10. Can you guess it?</p>
-                            <input type="number" placeholder="Your guess (1-10)" id="guessInput" min="1" max="10" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
-                            <button class="try-button" onclick="playGuessingGame()">Make Guess!</button>
-                            <div class="demo-output" id="guessingGame">Make your first guess! 🎯</div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-title">📝 Project 2: Personal To-Do List</div>
-                        <p><strong>What you'll learn:</strong> Lists/arrays, functions, string manipulation</p>
-                        <p><strong>Description:</strong> Build a simple app to manage your daily tasks!</p>
-                        
-                        <div class="code-block">
-                            <div class="code-header">🐍 To-Do List Functions</div>
-                            <span style="color: #f9fafb;">todo_list</span> = []<br><br>
-                            <span class="keyword">def</span> <span style="color: #f9fafb;">add_task</span>(<span style="color: #f9fafb;">task</span>):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">todo_list.append</span>(<span style="color: #f9fafb;">task</span>)<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Added: </span><span style="color: #f9fafb;">{task}</span><span class="string">"</span>)<br><br>
-                            <span class="keyword">def</span> <span style="color: #f9fafb;">show_tasks</span>():<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> <span style="color: #f9fafb;">i</span>, <span style="color: #f9fafb;">task</span> <span class="keyword">in</span> <span class="keyword">enumerate</span>(<span style="color: #f9fafb;">todo_list</span>, <span class="number">1</span>):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"</span><span style="color: #f9fafb;">{i}</span><span class="string">. </span><span style="color: #f9fafb;">{task}</span><span class="string">"</span>)<br><br>
-                            <span class="keyword">def</span> <span style="color: #f9fafb;">complete_task</span>(<span style="color: #f9fafb;">index</span>):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span class="number">0</span> <= <span style="color: #f9fafb;">index</span> < <span class="keyword">len</span>(<span style="color: #f9fafb;">todo_list</span>):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">completed</span> = <span style="color: #f9fafb;">todo_list.pop</span>(<span style="color: #f9fafb;">index</span>)<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Completed: </span><span style="color: #f9fafb;">{completed}</span><span class="string">"</span>)
-                        </div>
-
-                        <div class="interactive-demo">
-                            <div class="demo-title">📋 Mini To-Do List</div>
-                            <input type="text" placeholder="Add a task..." id="taskInput" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px; width: 200px;">
-                            <button class="try-button" onclick="addTask()">Add Task</button>
-                            <button class="try-button" onclick="clearTasks()" style="background: #ef4444;">Clear All</button>
-                            <div class="demo-output" id="todoDemo">Your tasks will appear here! ✅</div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-title">🧮 Project 3: Simple Calculator</div>
-                        <p><strong>What you'll learn:</strong> Functions, error handling, user interface</p>
-                        <p><strong>Description:</strong> Create a calculator that can perform basic math operations!</p>
-                        
-                        <div class="interactive-demo">
-                            <div class="demo-title">🔢 Try the Calculator</div>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 300px; margin: 1rem 0;">
-                                <input type="number" placeholder="First number" id="calc1" style="padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
-                                <input type="number" placeholder="Second number" id="calc2" style="padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
-                            </div>
-                            <div style="margin: 1rem 0;">
-                                <button class="try-button" onclick="calculate('+')" style="margin: 0.25rem;">+</button>
-                                <button class="try-button" onclick="calculate('-')" style="margin: 0.25rem;">-</button>
-                                <button class="try-button" onclick="calculate('*')" style="margin: 0.25rem;">×</button>
-                                <button class="try-button" onclick="calculate('/')" style="margin: 0.25rem;">÷</button>
-                            </div>
-                            <div class="demo-output" id="calculatorResult">Enter numbers and choose an operation! 🧮</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <strong>🚀 Next Level Projects:</strong> Once you master these basics, try building a weather app, a simple website, or even a basic game with graphics!
-                </div>
-
-                <div class="exercise">
-                    <div class="exercise-title">🎯 Project Planning</div>
-                    <p>Which project would you like to build first? What features would you add to make it your own?</p>
-                    <select class="exercise-input" id="projectChoice">
-                        <option value="">Choose a project...</option>
-                        <option value="guessing">🎯 Number Guessing Game</option>
-                        <option value="todo">📝 To-Do List App</option>
-                        <option value="calculator">🧮 Calculator</option>
-                        <option value="custom">🎨 My own idea!</option>
-                    </select>
-                    <textarea class="exercise-input" placeholder="What features would you add to make this project uniquely yours?" id="projectFeatures" rows="3"></textarea>
-                    <button class="check-answer" onclick="saveProjectPlan()">Save My Project Plan! 📋</button>
-                    <div id="projectResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
-                </div>
-
-                <div class="page-navigation">
-                    <button class="nav-button" onclick="prevPage()">
-                        ← Previous
-                    </button>
-                    <button class="nav-button" onclick="nextPage()">
-                        Next: Career Paths →
-                    </button>
-                </div>
+        <!-- Lab 1: Port Scanner Simulator -->
+        <div class="project-card">
+            <div class="project-title">🎯 Lab 1: Port Scanner Simulator</div>
+            <p><strong>What you'll learn:</strong> Loops, conditionals, user input – simulate scanning for open ports.</p>
+            <p><strong>Description:</strong> The computer picks a "secret port" (1‑10). You guess the port. The game gives hints (too high/low) until you find it.</p>
+            <div class="code-block">
+                <div class="code-header">🐍 Python Version</div>
+                <span class="keyword">import</span> <span style="color: #f9fafb;">random</span><br>
+                <span style="color: #f9fafb;">secret_port</span> = <span style="color: #f9fafb;">random.randint</span>(<span class="number">1</span>, <span class="number">10</span>)<br>
+                <span style="color: #f9fafb;">attempts</span> = <span class="number">0</span><br>
+                <span class="keyword">while</span> <span class="keyword">True</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">guess</span> = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Guess port (1-10): "</span>))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">attempts</span> += <span class="number">1</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span style="color: #f9fafb;">guess</span> == <span style="color: #f9fafb;">secret_port</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Port found in </span><span style="color: #f9fafb;">{attempts}</span><span class="string"> attempts!"</span>)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">elif</span> <span style="color: #f9fafb;">guess</span> &lt; <span style="color: #f9fafb;">secret_port</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Too low – try a higher port."</span>)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Too high – try a lower port."</span>)<br>
             </div>
+            <div class="interactive-demo">
+                <div class="demo-title">🎮 Try the Simulator</div>
+                <p>I'm thinking of a port between 1 and 10. Can you find it?</p>
+                <input type="number" placeholder="Your guess (1-10)" id="guessInput" min="1" max="10" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px; background: #1a1f24; color: white;">
+                <button class="try-button" onclick="playGuessingGame()">Make Guess</button>
+                <div class="demo-output" id="guessingGame">Make your first guess!</div>
+            </div>
+        </div>
+
+        <!-- Lab 2: Log Parser -->
+        <div class="project-card">
+            <div class="project-title">📝 Lab 2: Log Parser</div>
+            <p><strong>What you'll learn:</strong> Lists, functions, string manipulation – manage and analyze log entries.</p>
+            <p><strong>Description:</strong> Add log messages, view them, and clear the log – just like a real security analyst.</p>
+            <div class="code-block">
+                <div class="code-header">🐍 Log Parser Functions</div>
+                <span style="color: #f9fafb;">log_entries</span> = []<br>
+                <span class="keyword">def</span> <span style="color: #f9fafb;">add_log</span>(<span style="color: #f9fafb;">entry</span>):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">log_entries.append</span>(<span style="color: #f9fafb;">entry</span>)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Logged: </span><span style="color: #f9fafb;">{entry}</span><span class="string">"</span>)<br>
+                <span class="keyword">def</span> <span style="color: #f9fafb;">show_logs</span>():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> <span style="color: #f9fafb;">i</span>, <span style="color: #f9fafb;">entry</span> <span class="keyword">in</span> <span class="keyword">enumerate</span>(<span style="color: #f9fafb;">log_entries</span>, <span class="number">1</span>):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"</span><span style="color: #f9fafb;">{i}</span><span class="string">. </span><span style="color: #f9fafb;">{entry}</span><span class="string">"</span>)<br>
+                <span class="keyword">def</span> <span style="color: #f9fafb;">clear_logs</span>():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">log_entries.clear</span>()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Log cleared."</span>)<br>
+            </div>
+            <div class="interactive-demo">
+                <div class="demo-title">📋 Mini Log Parser</div>
+                <input type="text" placeholder="Enter log message..." id="taskInput" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px; width: 200px; background: #1a1f24; color: white;">
+                <button class="try-button" onclick="addTask()">Add Log</button>
+                <button class="try-button" onclick="clearTasks()" style="background: #ef4444;">Clear All</button>
+                <div class="demo-output" id="todoDemo">Your logs will appear here.</div>
+            </div>
+        </div>
+
+        <!-- Lab 3: Bandwidth Calculator -->
+        <div class="project-card">
+            <div class="project-title">🧮 Lab 3: Bandwidth Calculator</div>
+            <p><strong>What you'll learn:</strong> Functions, error handling, arithmetic – calculate network bandwidth and latency.</p>
+            <p><strong>Description:</strong> Enter bandwidth (Mbps) and latency (ms) to calculate transfer times and throughput.</p>
+            <div class="interactive-demo">
+                <div class="demo-title">🔢 Try the Calculator</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 300px; margin: 1rem 0;">
+                    <input type="number" placeholder="Bandwidth (Mbps)" id="calc1" style="padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px; background: #1a1f24; color: white;">
+                    <input type="number" placeholder="Latency (ms)" id="calc2" style="padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px; background: #1a1f24; color: white;">
+                </div>
+                <div style="margin: 1rem 0;">
+                    <button class="try-button" onclick="calculate('+')" style="margin: 0.25rem;">➕</button>
+                    <button class="try-button" onclick="calculate('-')" style="margin: 0.25rem;">➖</button>
+                    <button class="try-button" onclick="calculate('*')" style="margin: 0.25rem;">✖️</button>
+                    <button class="try-button" onclick="calculate('/')" style="margin: 0.25rem;">➗</button>
+                </div>
+                <div class="demo-output" id="calculatorResult">Enter numbers and choose an operation.</div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <strong>🚀 Next Level:</strong> Once you master these labs, try building a real port scanner with Nmap, a log aggregator, or a network speed tester.
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">🎯 Lab Reflection</div>
+            <p>Which lab most interests you? What features would you add to make it more powerful for a security analyst?</p>
+            <select class="exercise-input" id="projectChoice">
+                <option value="">Choose a lab...</option>
+                <option value="guessing">🔍 Port Scanner Simulator</option>
+                <option value="todo">📝 Log Parser</option>
+                <option value="calculator">🧮 Bandwidth Calculator</option>
+                <option value="custom">💡 My own idea</option>
+            </select>
+            <textarea class="exercise-input" placeholder="What enhancements would you add?" id="projectFeatures" rows="3"></textarea>
+            <button class="check-answer" onclick="saveProjectPlan()">Save My Ideas! 📋</button>
+            <div id="projectResponse" style="margin-top: 1rem; font-weight: bold; color: #00ff78;"></div>
+        </div>
+    </div>
+    <div class="page-navigation">
+        <button class="nav-button" onclick="prevPage()">← Previous</button>
+        <button class="nav-button" onclick="nextPage()">Next →</button>
+    </div>
+</div>
 
             <!-- Page 6: Next Steps & Career Paths -->
             <div class="page" id="page6">
