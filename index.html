@@ -1440,6 +1440,12 @@ ul.details, li, .interactive-demo input, .interactive-demo select,
         <a href="#page5" class="quick-nav-item" onclick="showPage(5)">Projects</a>
         <a href="#page6" class="quick-nav-item" onclick="showPage(6)">Career</a>
     </div>
+    <div style="display: inline-block; margin-left: 1rem;">
+        <select id="pageJumpSelect" onchange="showPage(parseInt(this.value))" style="padding: 0.3rem; background: #1a1f24; color: white; border: 1px solid #00ff78; border-radius: 4px; font-family: monospace;">
+            <option value="">Jump...</option>
+        </select>
+    </div>
+
 
     <!-- Search Modal -->
     <div class="search-modal no-print" id="searchModal">
