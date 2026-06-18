@@ -1611,105 +1611,45 @@ body {
 
             <!-- Page 3: Choosing Your First Programming Language -->
             <div class="page" id="page3">
-                <div class="page-header">
-                    <h1 class="page-title">🎯 Choosing Your First Programming Language</h1>
-                    <p class="page-subtitle">Find the perfect language to start your journey</p>
-                </div>
-
-                <div class="content-section">
-                    <h2 class="section-title">Popular Beginner-Friendly Languages</h2>
-                    <p>Don't worry about choosing the "perfect" language – the concepts you learn in one language transfer to others! Here are the most beginner-friendly options:</p>
-
-                    <div class="language-grid">
-                        <div class="language-card" onclick="selectLanguage('python')">
-                            <div class="language-name">🐍 Python</div>
-                            <p><strong>Best for:</strong> Beginners, data science, AI</p>
-                            <p><strong>Why it's great:</strong> Reads like English, very forgiving</p>
-                            <div class="code-block" style="margin-top: 1rem;">
-                                <span class="keyword">print</span>(<span class="string">"Hello, World!"</span>)
-                            </div>
-                        </div>
-
-                        <div class="language-card" onclick="selectLanguage('javascript')">
-                            <div class="language-name">🌐 JavaScript</div>
-                            <p><strong>Best for:</strong> Web development, interactive websites</p>
-                            <p><strong>Why it's great:</strong> Runs everywhere, instant results</p>
-                            <div class="code-block" style="margin-top: 1rem;">
-                                <span style="color: #f9fafb;">console.</span><span class="keyword">log</span>(<span class="string">"Hello, World!"</span>);
-                            </div>
-                        </div>
-
-                        <div class="language-card" onclick="selectLanguage('scratch')">
-                            <div class="language-name">🧩 Scratch</div>
-                            <p><strong>Best for:</strong> Complete beginners, visual learning</p>
-                            <p><strong>Why it's great:</strong> Drag-and-drop, no typing errors</p>
-                            <div style="background: #ff6b6b; color: white; padding: 0.5rem; border-radius: 4px; margin-top: 1rem; text-align: center;">
-                                [Visual Block Programming]
-                            </div>
-                        </div>
-
-                        <div class="language-card" onclick="selectLanguage('java')">
-                            <div class="language-name">☕ Java</div>
-                            <p><strong>Best for:</strong> Mobile apps, enterprise software</p>
-                            <p><strong>Why it's great:</strong> Widely used, great job prospects</p>
-                            <div class="code-block" style="margin-top: 1rem;">
-                                <span style="color: #f9fafb;">System.out.</span><span class="keyword">println</span>(<span class="string">"Hello!"</span>);
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <strong>💡 Pro Tip:</strong> Your first language won't be your last! Most programmers know multiple languages. Start with one that excites you and matches your goals.
-                </div>
-
-                <div class="interactive-demo">
-                    <div class="demo-title">🎮 Language Recommendation Quiz</div>
-                    <p>Answer a few questions to get a personalized recommendation:</p>
-                    
-                    <div style="margin: 1rem 0;">
-                        <p><strong>What interests you most?</strong></p>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="interest" value="web"> 🌐 Building websites</label>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="interest" value="data"> 📊 Working with data</label>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="interest" value="games"> 🎮 Creating games</label>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="interest" value="mobile"> 📱 Mobile apps</label>
-                    </div>
-
-                    <div style="margin: 1rem 0;">
-                        <p><strong>How do you prefer to learn?</strong></p>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="learning" value="visual"> 👀 Visual/drag-and-drop</label>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="learning" value="typing"> ⌨️ Typing code</label>
-                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="learning" value="both"> 🤝 Both approaches</label>
-                    </div>
-
-                    <button class="try-button" onclick="getLanguageRecommendation()">Get My Recommendation! 🎯</button>
-                    <div class="demo-output" id="languageRecommendation">Take the quiz above to get your personalized recommendation! 🌟</div>
-                </div>
-
-                <div class="exercise">
-                    <div class="exercise-title">📝 Your Language Choice</div>
-                    <p>Based on what you've learned, which language would you like to start with?</p>
-                    <select class="exercise-input" id="chosenLanguage">
-                        <option value="">Choose your language...</option>
-                        <option value="python">🐍 Python</option>
-                        <option value="javascript">🌐 JavaScript</option>
-                        <option value="scratch">🧩 Scratch</option>
-                        <option value="java">☕ Java</option>
-                        <option value="other">🤔 I want to explore more options</option>
-                    </select>
-                    <button class="check-answer" onclick="confirmLanguageChoice()">Lock in My Choice! 🔒</button>
-                    <div id="languageResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
-                </div>
-
-                <div class="page-navigation">
-                    <button class="nav-button" onclick="prevPage()">
-                        ← Previous
-                    </button>
-                    <button class="nav-button" onclick="nextPage()">
-                        Next: Basic Concepts →
-                    </button>
-                </div>
+    <div class="page-header">
+        <h1 class="page-title">🐍 Language of the Operator</h1>
+        <p class="page-subtitle">Python & Bash – the tools of the trade</p>
+    </div>
+    <div class="content-section">
+        <p>In the Imperial Cyber Book, we use <strong style="color: #00ff78;">Python</strong> and <strong style="color: #00ff78;">Bash</strong> as our primary languages. They are powerful, versatile, and run natively in Termux.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">🐍 Python</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Used for automation, scripting, building APIs, and data analysis. Its readability makes it ideal for beginners.</p>
             </div>
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">💲 Bash</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">The native shell language of Linux/Unix. Used for file management, process control, and orchestrating commands.</p>
+            </div>
+        </div>
+        <p>Together, they allow you to automate almost anything on a system, from simple file operations to complex network reconnaissance.</p>
+        <div class="interactive-demo">
+            <div class="demo-title">📝 Try Python in Termux</div>
+            <p>Enter this Python script and see the output:</p>
+            <div class="code-block">
+                <span style="color: #00ff78;">print("Hello, Operator! The terminal is your friend.")</span>
+            </div>
+            <button class="try-button" onclick="alert('Open Termux, type python3, then paste the command.')">Try It Now</button>
+        </div>
+        <div class="interactive-demo" style="margin-top: 1.5rem;">
+            <div class="demo-title">💲 Try a Bash Command</div>
+            <p>Run this in your terminal:</p>
+            <div class="code-block">
+                <span style="color: #00ff78;">echo "Bash says: You are on $(uname -o)"</span>
+            </div>
+            <button class="try-button" onclick="alert('Open Termux and run the command!')">Try It Now</button>
+        </div>
+    </div>
+    <div class="page-navigation">
+        <button class="nav-button" onclick="prevPage()">← Previous</button>
+        <button class="nav-button" onclick="nextPage()">Next →</button>
+    </div>
+</div>
 
             <!-- Page 4: Basic Programming Concepts -->
             <div class="page" id="page4">
