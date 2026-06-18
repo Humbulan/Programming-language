@@ -1653,137 +1653,45 @@ body {
 
             <!-- Page 4: Basic Programming Concepts -->
             <div class="page" id="page4">
-                <div class="page-header">
-                    <h1 class="page-title">🔧 Basic Programming Concepts</h1>
-                    <p class="page-subtitle">The building blocks of all programs</p>
-                </div>
-
-                <div class="content-section">
-                    <h2 class="section-title">1. Variables - Storing Information</h2>
-                    <p>Variables are like labeled boxes where you store information. You can put different types of data in them and use them later!</p>
-
-                    <div class="code-block">
-                        <div class="code-header">🐍 Python Examples</div>
-                        <span class="comment"># Storing different types of information</span><br>
-                        <span style="color: #f9fafb;">name</span> = <span class="string">"Alex"</span>        <span class="comment"># Text (string)</span><br>
-                        <span style="color: #f9fafb;">age</span> = <span class="number">16</span>             <span class="comment"># Number (integer)</span><br>
-                        <span style="color: #f9fafb;">height</span> = <span class="number">5.8</span>         <span class="comment"># Decimal (float)</span><br>
-                        <span style="color: #f9fafb;">is_student</span> = <span class="keyword">True</span>   <span class="comment"># True/False (boolean)</span>
-                    </div>
-
-                    <div class="interactive-demo">
-                        <div class="demo-title">🎮 Try Variables!</div>
-                        <p>Create your own variables:</p>
-                        <input type="text" placeholder="Your name" id="varName" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
-                        <input type="number" placeholder="Your age" id="varAge" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
-                        <button class="try-button" onclick="createVariables()">Create Variables!</button>
-                        <div class="demo-output" id="variableDemo">Enter your info above! 📝</div>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h2 class="section-title">2. Functions - Reusable Code Blocks</h2>
-                    <p>Functions are like mini-programs that do specific tasks. You can use them over and over again!</p>
-
-                    <div class="code-block">
-                        <div class="code-header">🐍 Function Example</div>
-                        <span class="keyword">def</span> <span style="color: #f9fafb;">greet_person</span>(<span style="color: #f9fafb;">name</span>):<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">f"Hello, </span><span style="color: #f9fafb;">{name}</span><span class="string">! Welcome to coding!"</span><br><br>
-                        <span class="comment"># Using the function</span><br>
-                        <span style="color: #f9fafb;">message</span> = <span style="color: #f9fafb;">greet_person</span>(<span class="string">"Sarah"</span>)<br>
-                        <span class="keyword">print</span>(<span style="color: #f9fafb;">message</span>)  <span class="comment"># Output: Hello, Sarah! Welcome to coding!</span>
-                    </div>
-
-                    <div class="interactive-demo">
-                        <div class="demo-title">🎯 Function Practice</div>
-                        <p>Try our greeting function:</p>
-                        <input type="text" placeholder="Enter a name" id="functionName" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
-                        <button class="try-button" onclick="runGreetingFunction()">Run Function!</button>
-                        <div class="demo-output" id="functionDemo">Enter a name and click the button! 👋</div>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h2 class="section-title">3. Loops - Repeating Actions</h2>
-                    <p>Loops let you repeat code multiple times without writing it over and over. Perfect for repetitive tasks!</p>
-
-                    <div class="code-block">
-                        <div class="code-header">🔄 Loop Examples</div>
-                        <span class="comment"># Count from 1 to 5</span><br>
-                        <span class="keyword">for</span> <span style="color: #f9fafb;">i</span> <span class="keyword">in</span> <span style="color: #f9fafb;">range</span>(<span class="number">1</span>, <span class="number">6</span>):<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Count: </span><span style="color: #f9fafb;">{i}</span><span class="string">"</span>)<br><br>
-                        <span class="comment"># Repeat while condition is true</span><br>
-                        <span style="color: #f9fafb;">countdown</span> = <span class="number">3</span><br>
-                        <span class="keyword">while</span> <span style="color: #f9fafb;">countdown</span> > <span class="number">0</span>:<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span style="color: #f9fafb;">countdown</span>)<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">countdown</span> -= <span class="number">1</span>
-                    </div>
-
-                    <div class="interactive-demo">
-                        <div class="demo-title">🔄 Loop in Action</div>
-                        <p>Watch a loop count down:</p>
-                        <button class="try-button" onclick="runCountdownLoop()">Start Countdown!</button>
-                        <div class="demo-output" id="loopDemo">Click to see the countdown! ⏰</div>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h2 class="section-title">4. Conditional Statements - Making Decisions</h2>
-                    <p>Conditionals let your program make decisions based on different situations!</p>
-
-                    <div class="code-block">
-                        <div class="code-header">🤔 Decision Making</div>
-                        <span style="color: #f9fafb;">temperature</span> = <span class="number">75</span><br><br>
-                        <span class="keyword">if</span> <span style="color: #f9fafb;">temperature</span> > <span class="number">80</span>:<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"It's hot! Wear shorts."</span>)<br>
-                        <span class="keyword">elif</span> <span style="color: #f9fafb;">temperature</span> > <span class="number">60</span>:<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Nice weather! Perfect for a walk."</span>)<br>
-                        <span class="keyword">else</span>:<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"It's cold! Bring a jacket."</span>)
-                    </div>
-
-                    <div class="interactive-demo">
-                        <div class="demo-title">🌡️ Weather Advisor</div>
-                        <p>Get clothing advice based on temperature:</p>
-                        <input type="number" placeholder="Temperature (°F)" id="tempInput" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
-                        <button class="try-button" onclick="getWeatherAdvice()">Get Advice!</button>
-                        <div class="demo-output" id="weatherDemo">Enter a temperature! 🌤️</div>
-                    </div>
-                </div>
-
-                <div class="exercise">
-                    <div class="exercise-title">🧠 Concept Check</div>
-                    <p>Match each concept with its description:</p>
-                    <div style="margin: 1rem 0;">
-                        <p><strong>Variable:</strong> 
-                        <select id="conceptMatch1" style="margin-left: 0.5rem;">
-                            <option value="">Choose...</option>
-                            <option value="correct">Stores information for later use</option>
-                            <option value="wrong1">Repeats code multiple times</option>
-                            <option value="wrong2">Makes decisions in code</option>
-                        </select></p>
-                        
-                        <p><strong>Loop:</strong> 
-                        <select id="conceptMatch2" style="margin-left: 0.5rem;">
-                            <option value="">Choose...</option>
-                            <option value="wrong1">Stores information for later use</option>
-                            <option value="correct">Repeats code multiple times</option>
-                            <option value="wrong2">Makes decisions in code</option>
-                        </select></p>
-                    </div>
-                    <button class="check-answer" onclick="checkConceptMatch()">Check My Answers! ✅</button>
-                    <div id="conceptResponse" style="margin-top: 1rem; font-weight: bold;"></div>
-                </div>
-
-                <div class="page-navigation">
-                    <button class="nav-button" onclick="prevPage()">
-                        ← Previous
-                    </button>
-                    <button class="nav-button" onclick="nextPage()">
-                        Next: Hands-on Projects →
-                    </button>
-                </div>
+    <div class="page-header">
+        <h1 class="page-title">🧠 Core Concepts</h1>
+        <p class="page-subtitle">Filesystem, Processes, Networking & Scripting</p>
+    </div>
+    <div class="content-section">
+        <p>These four pillars will form the foundation of your daily operations as a terminal operator:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">📁 Filesystem</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Navigate, create, move, and manage files and directories using commands like <code>ls</code>, <code>cd</code>, <code>cp</code>, <code>mv</code>.</p>
             </div>
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">⚙️ Processes</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">View, control, and manage running processes with <code>ps</code>, <code>top</code>, <code>kill</code>, and background/foreground jobs.</p>
+            </div>
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">🌐 Networking</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Check connectivity, scan ports, and analyze traffic using <code>ping</code>, <code>nmap</code>, <code>netstat</code>, and <code>tcpdump</code>.</p>
+            </div>
+            <div class="highlight-box" style="margin: 0;">
+                <strong style="color: #00ff78;">📜 Scripting</strong>
+                <p style="color: #d0dbe3; font-size: 0.95rem;">Automate repetitive tasks with Bash scripts and Python; combine commands with pipes and conditionals.</p>
+            </div>
+        </div>
+        <p>You'll practice these every day, building muscle memory and confidence.</p>
+        <div class="interactive-demo">
+            <div class="demo-title">💻 Quick Practice</div>
+            <p>Try these commands in Termux:</p>
+            <div class="code-block" style="margin: 0.5rem 0;">
+                <span style="color: #00ff78;">ls -la ~/<br>ps aux | grep termux<br>ping -c 4 google.com</span>
+            </div>
+            <button class="try-button" onclick="alert('Open Termux and run the commands above!')">Try It Now</button>
+        </div>
+    </div>
+    <div class="page-navigation">
+        <button class="nav-button" onclick="prevPage()">← Previous</button>
+        <button class="nav-button" onclick="nextPage()">Next →</button>
+    </div>
+</div>
 
             <!-- Page 5: Hands-on Projects for Beginners -->
             <div class="page" id="page5">
