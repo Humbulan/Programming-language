@@ -1292,6 +1292,113 @@ body {
 .footer-badges {
     color: #6a7a85 !important;
 }
+
+/* Fix for interactive demo outputs, project cards, exercise boxes */
+.demo-output, .calculator-result, .project-card, .exercise, .exercise-title,
+.code-header, .interactive-demo, .demo-title, .try-button, .nav-button,
+.features-grid, .feature-item, .cta-section, .book-stats, .footer-badges,
+.social-sharing, .social-btn, .enterprise-branding, .enterprise-name,
+.enterprise-tagline, .company-motto, .edition-badge, .book-cover-design,
+.decorative-circle-1, .decorative-circle-2, .programming-icons,
+.programming-icon, .cover-page, .book-title, .book-subtitle,
+.highlight-box, .content-section, .page-header, .page-title, .page-subtitle,
+ul.details, li, .interactive-demo input, .interactive-demo select,
+.interactive-demo textarea, .exercise-input, .exercise-input select,
+.exercise-input textarea, .check-answer, .submit-btn, .social-btn {
+    background: #0f1214 !important;
+    color: #d0dbe3 !important;
+    border-color: #283237 !important;
+}
+
+/* Specific for input/textarea/select inside interactive demos and exercises */
+.interactive-demo input,
+.interactive-demo select,
+.interactive-demo textarea,
+.exercise-input,
+.exercise-input select,
+.exercise-input textarea {
+    background: #1a1f24 !important;
+    color: #ffffff !important;
+    border: 1px solid #283237 !important;
+    border-radius: 4px !important;
+    padding: 0.5rem !important;
+}
+
+/* Fix for calculator result and other output divs */
+#calculatorResult, #todoDemo, #guessingGame, #variableDemo, #functionDemo,
+#loopDemo, #weatherDemo, #conceptResponse, #projectResponse, #motivationResponse,
+#languageResponse, #languageRecommendation, #ageInput, #varName, #varAge,
+#functionName, #tempInput, #guessInput, #taskInput, #calc1, #calc2 {
+    background: #1a1f24 !important;
+    color: #d0dbe3 !important;
+    border: 1px solid #283237 !important;
+    border-radius: 4px !important;
+    padding: 0.5rem !important;
+}
+
+/* Fix for code blocks and their headers */
+.code-block, .code-header {
+    background: #0a0c0e !important;
+    color: #00ff78 !important;
+    border: 1px solid #283237 !important;
+    border-radius: 4px !important;
+    font-family: monospace !important;
+}
+.code-header {
+    color: #aab9c3 !important;
+}
+.code-block .keyword, .code-block .string, .code-block .number, .code-block .comment {
+    color: #00ff78 !important;
+}
+.code-block .keyword { color: #ff6b6b !important; }
+.code-block .string { color: #ffd93d !important; }
+.code-block .number { color: #6bcbff !important; }
+.code-block .comment { color: #6a7a85 !important; }
+
+/* Fix for project cards and exercise boxes */
+.project-card, .exercise {
+    background: #1a1f24 !important;
+    border: 1px solid #283237 !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 2rem !important;
+}
+.project-title, .exercise-title {
+    color: #00ff78 !important;
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Fix for navigation buttons and try buttons to match theme */
+.nav-button, .try-button, .check-answer, .submit-btn, .social-btn {
+    background: #283237 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+}
+.try-button, .check-answer, .submit-btn {
+    background: #00ff78 !important;
+    color: #0f1214 !important;
+}
+.try-button:hover, .check-answer:hover, .submit-btn:hover {
+    background: #66ff99 !important;
+}
+.nav-button:hover {
+    background: #3a4a4f !important;
+}
+.nav-button:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+.social-btn {
+    background: #283237 !important;
+}
+.social-btn:hover {
+    background: #3a4a4f !important;
+}
 </style>
 
 </head>
